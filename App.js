@@ -1,68 +1,63 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Dimensions, Button } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 
-const { heigh, width } = Dimensions.get('window');
+const voisins = require('./voisins.json');
 
-export default function App() {
-  return (
-    <LinearGradient style={styles.container} colors={['#DA4453', '#89216B']}>
-      <Text style={styles.appTitle}>New neighbour</Text>
-      <Image 
-          source={require('./assets/image.jpeg')}  
-          style={styles.image} 
-      />
-      <View style={styles.card}>
-        <TextInput style={styles.input} placeholder="Name" />
-        <TextInput style={styles.input} placeholder="Phone number" />
-        <TextInput style={styles.input} placeholder="Address" />
-        <TextInput style={[styles.input, styles.about]} placeholder="About me"/>
-        <Button style={styles.button}
-          onPress={() => {}}
-          title="Save"
+export default FlatListBasics = () => {
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={[
+            {image: require('./assets/image.jpeg'), key: voisins.voisin1.name , icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'Dan', icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'Dominic', icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'Jackson', icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'James', icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'Joel', icon: require('./assets/icons8-effacer-24.png')},
+            {image: require('./assets/image.jpeg'), key: 'John', icon: require('./assets/icons8-effacer-24.png')},
+          ]}
+          renderItem={({item}) => 
+          <View style={styles.item}>
+            <View style={{flex:1, flexDirection:'row', alignItems:'center'}}>
+              <Image source={item.image}
+                style={styles.image}
+              />
+              <Text style={styles.name}>{item.key}</Text>
+            </View>
+            <Image source={item.icon}  
+            />
+          </View>}
         />
       </View>
-    </LinearGradient>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
   container: {
+   flex: 1,
+   paddingTop: 22
+  },
+  item: {
     flex: 1,
-    alignItems: 'center',
-    //justifyContent: 'center',
-  },
-  card:{
-    flex: 1,
-    width: width - 25,
-    //alignItems: 'center',
-  },
-  appTitle: {
-    color: '#fff',
-    fontSize: 36,
-    marginTop: 60,
-    marginBottom: 30,
-    fontWeight: '300'
-  },
-  input: {
-    marginTop: 20,
     padding: 10,
-    borderColor: '#fff',
-    borderWidth: 1,
-    borderRadius: 10,
-    fontSize: 24
+    fontSize: 18,
+    height: 90,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomWidth : 1,
+    
   },
   image: {
-    width: 90, 
-    height: 90, 
-    borderRadius: 90/ 2,
+    width: 60, 
+    height: 60, 
+    borderRadius: 60/ 2,
     padding : 20,
   },
-  about:{
-    marginBottom : 20,
-    maxHeight: 100,
-  },
-  button: {
-    borderRadius: 50,
+  name: {
+    color: 'gray',
+    marginLeft: 20,
+    fontWeight: 'bold',
+    fontSize: 20,
   }
-});
+})

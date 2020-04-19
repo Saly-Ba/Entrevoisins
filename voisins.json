@@ -1,0 +1,22 @@
+{
+    "voisin1":
+    {
+        "name":"Chloe",
+        "image":"./assets/image.jpeg"
+    },
+    "voisin2":
+    {
+        "name":"John",
+        "image":"./assets/image.jpeg"
+    },
+    "voisin3":
+    {
+        "name":"Rahman",
+        "image":"./assets/image.jpeg"
+    },
+    "voisin4":
+    {
+        "name":"Emma",
+        "image":"./assets/image.jpeg"
+    }
+}
